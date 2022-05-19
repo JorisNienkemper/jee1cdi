@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CdiTests {
+public class CDIQualifiersTests {
 
     WeldContainer container;
 
@@ -25,7 +25,7 @@ public class CdiTests {
     void startCDI(){
         WeldInstance<PrinterService> cdiWrapper = container.select(PrinterService.class);
         PrinterService printerService = cdiWrapper.get();
-        printerService.print("Wat een werk zeg!");
+        printerService.print("Valt best mee!");
     }
 
     @Test
@@ -47,22 +47,6 @@ public class CdiTests {
         assertThat(ib1.getPrinterService()).isNotEqualTo(ib2.getPrinterService());
     }
 
-    @Test
-    @DisplayName("Een auto heeft 4 wielen een stuur en optioneel een stereo installatie met dolby atmos")
-    void createAutoTheOldWay(){
 
-        Auto auto = new Auto(new Wiel(), new Wiel(), new Wiel(), new Wiel(), new Motor());
-
-
-    }
-
-    @Test
-    @DisplayName("Een auto heeft 4 wielen een stuur en optioneel een stereo installatie met dolby atmos")
-    void createAutoTheNewdWay(){
-
-        Auto auto = container.select(Auto.class).get();
-
-        System.out.println(auto.toString());
-    }
 
 }
