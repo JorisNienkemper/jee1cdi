@@ -4,6 +4,7 @@ import jakarta.enterprise.inject.Any;
 import jakarta.enterprise.inject.Default;
 
 @Any
+@Console
 public class ConsolePrinterService implements PrinterService {
 
     public void print(String message){

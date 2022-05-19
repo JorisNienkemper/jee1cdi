@@ -6,15 +6,15 @@ import jakarta.inject.Inject;
 public class ImportantBean {
 
     //PrinterService noemen we een dependency
-    @Inject
-    @File
+    //@Inject
+    //@File
     private PrinterService printerService;
 
     public ImportantBean() {
         System.out.println("default constructor ib called");
     }
 
-    @Inject
+    //@Inject
     public ImportantBean( @File PrinterService printerService){
         System.out.println("Constructor ib called");
         this.printerService =printerService;
@@ -23,9 +23,13 @@ public class ImportantBean {
     public PrinterService getPrinterService() {
         return printerService;
     }
+
+    //  Unsatisfied dependencies for type PrinterService with qualifiers @Default
+    //  at injection point [BackedAnnotatedParameter] Parameter 1 of
+    //  [BackedAnnotatedMethod] @Inject @Console public nl.bld.cdidocent.ImportantBean.setPrinterService(PrinterService)
+    //  at nl.bld.cdidocent.ImportantBean.setPrinterService(ImportantBean.java:0)
     @Inject
-    @File
-    public void setPrinterService(PrinterService printerService){
+    public void setPrinterService( @Console PrinterService printerService){
         System.out.println("setter is called");
         this.printerService=printerService;
     }
