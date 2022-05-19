@@ -5,7 +5,7 @@ import jakarta.inject.Inject;
 public class ImportantBean {
 
     //PrinterService noemen we een dependency
-    @Inject
+    //@Inject
     private PrinterService printerService;
 
     public ImportantBean() {
@@ -21,7 +21,7 @@ public class ImportantBean {
     public PrinterService getPrinterService() {
         return printerService;
     }
-    @Inject
+    //@Inject
     public void setPrinterService(PrinterService printerService){
         System.out.println("setter is called");
         this.printerService=printerService;
