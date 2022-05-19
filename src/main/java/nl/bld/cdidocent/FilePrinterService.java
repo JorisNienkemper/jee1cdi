@@ -1,10 +1,13 @@
 package nl.bld.cdidocent;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Any;
 import jakarta.enterprise.inject.Default;
 
 @Any
 @File
+@ApplicationScoped
 public class FilePrinterService  implements PrinterService  {
 
     public void print(String message){

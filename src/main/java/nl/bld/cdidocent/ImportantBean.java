@@ -1,20 +1,23 @@
 package nl.bld.cdidocent;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 
+@Dependent
 public class ImportantBean {
 
     //PrinterService noemen we een dependency
-    //@Inject
-    //@File
+//    @Inject
+//    @File
     private PrinterService printerService;
 
     public ImportantBean() {
         System.out.println("default constructor ib called");
     }
 
-    //@Inject
+    @Inject
     public ImportantBean( @File PrinterService printerService){
         System.out.println("Constructor ib called");
         this.printerService =printerService;
@@ -28,8 +31,9 @@ public class ImportantBean {
     //  at injection point [BackedAnnotatedParameter] Parameter 1 of
     //  [BackedAnnotatedMethod] @Inject @Console public nl.bld.cdidocent.ImportantBean.setPrinterService(PrinterService)
     //  at nl.bld.cdidocent.ImportantBean.setPrinterService(ImportantBean.java:0)
+
     @Inject
-    public void setPrinterService( @Console PrinterService printerService){
+    public void setPrinterService(@File PrinterService printerService){
         System.out.println("setter is called");
         this.printerService=printerService;
     }

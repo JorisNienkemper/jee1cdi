@@ -36,7 +36,7 @@ public class CDIQualifiersTests {
         AnnotationLiteral<Console> consoleAnnotation = new AnnotationLiteral<Console>() {};
         AnnotationLiteral<File> fileAnnotation = new AnnotationLiteral<File>() {};
 
-        WeldInstance<PrinterService> cdiWrapper = container.select(PrinterService.class, fileAnnotation);
+        WeldInstance<PrinterService> cdiWrapper = container.select(PrinterService.class,fileAnnotation);
         PrinterService printerService = cdiWrapper.get();
         printerService.print("Valt best mee!");
     }
@@ -49,16 +49,7 @@ public class CDIQualifiersTests {
         importantBean.doWork();
     }
 
-    @Test
-    @DisplayName("Start up the WeldContainer (CDI container)")
-    void watGeurtErHierAllemaal(){
-        ImportantBean ib1 = container.select(ImportantBean.class).get();;
-        ib1.doWork();
-        ImportantBean ib2 = container.select(ImportantBean.class).get();;
-        ib2.doWork();
-        assertThat(ib1).isNotEqualTo(ib2);//importantBeans zijn verschillende instanties
-        assertThat(ib1.getPrinterService()).isNotEqualTo(ib2.getPrinterService());
-    }
+
 
 
 
