@@ -7,7 +7,8 @@ import jakarta.enterprise.inject.Default;
 
 @Any
 @File
-@ApplicationScoped
+@Dependent
+//@ApplicationScoped
 public class FilePrinterService  implements PrinterService  {
 
     public void print(String message){

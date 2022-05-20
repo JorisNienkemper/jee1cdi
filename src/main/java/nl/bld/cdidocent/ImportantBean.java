@@ -3,7 +3,10 @@ package nl.bld.cdidocent;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Default;
+import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
+
+import java.util.List;
 
 @Dependent
 public class ImportantBean {
@@ -13,14 +16,18 @@ public class ImportantBean {
 //    @File
     private PrinterService printerService;
 
+    @Inject
+    @ImportantPeople
+    private List<String> importantPersons;
+
     public ImportantBean() {
         System.out.println("default constructor ib called");
     }
 
     @Inject
-    public ImportantBean( @File PrinterService printerService){
+    public ImportantBean(@File PrinterService printerService) {
         System.out.println("Constructor ib called");
-        this.printerService =printerService;
+        this.printerService = printerService;
     }
 
     public PrinterService getPrinterService() {
@@ -33,9 +40,16 @@ public class ImportantBean {
     //  at nl.bld.cdidocent.ImportantBean.setPrinterService(ImportantBean.java:0)
 
     @Inject
-    public void setPrinterService(@File PrinterService printerService){
+    public void setPrinterService( @File Instance<PrinterService> printerServiceInstance) {
         System.out.println("setter is called");
-        this.printerService=printerService;
+        if (printerServiceInstance.isResolvable()) {
+            this.printerService = printerServiceInstance.get();
+        }
+    }
+
+
+    public List<String> getImportantPersons() {
+        return importantPersons;
     }
 
     public void doWork() {
